@@ -1,0 +1,8 @@
+Câu hỏi đúng sai 1?:
+A) True
+B) False
+ANSWER: T
+Câu hỏi đúng sai 2?:
+A) True
+B) False
+ANSWER: F

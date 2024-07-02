@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate XML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Generate XML from Text File</h1>
+    <form id="uploadForm">
+        <div class="form-group">
+            <label for="questionType">Loại câu hỏi:</label>
+            <select id="questionType" name="questionType" class="questionType">
+                <option value="0">Chọn loại câu hỏi</option>
+                <option value="1">Multiple choice</option>
+                <option value="2">Multiple answers</option>
+                <option value="3">True/False</option>
+            </select>
+        </div>
+        <button type="download" onclick="downloadSampleFile()">Download File Mẫu</button>
+        <div class="form-group">
+            <input type="file" id="fileInput" accept=".txt">    
+        </div>
+        <button type="submit">Generate XML</button>   
+    </form>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            uploadFile();
+        });
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const questionTypeSelect = document.getElementById('questionType');
+            const file = fileInput.files[0];
+            const questionType = questionTypeSelect.value;
+
+            if (!file) {
+                alert('Please select a file first!');
+                return;
+            }
+
+            if (questionType === "0") {
+                alert('Please select a question type!');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('questionType', questionType);
+
+            try {
+                const response = await fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to generate XML.');
+                }
+
+                const blob = await response.blob();
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'output.zip';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        }
+
+        async function downloadSampleFile() {
+            const questionTypeSelect = document.getElementById('questionType');
+            const selectedType = questionTypeSelect.value;
+            let sampleFileName = '';
+
+            switch (parseInt(selectedType)) {
+                case 1:
+                    sampleFileName = 'multiple_choice_sample.txt';
+                    break;
+                case 2:
+                    sampleFileName = 'multiple_answers_sample.txt';
+                    break;
+                case 3:
+                    sampleFileName = 'true_false_sample.txt';
+                    break;
+                default:
+                    alert('Vui lòng chọn loại câu hỏi trước!');
+                    return;
+            }
+
+            try {
+                const response = await fetch(`/api/sample/${sampleFileName}`);
+                if (!response.ok) {
+                    throw new Error('Failed to download sample file.');
+                }
+
+                const blob = await response.blob();
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = sampleFileName;
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

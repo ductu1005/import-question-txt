@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f0f0f0; 
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#fileInput {
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+button[type=download] {
+    border-radius: 6px;
+    border: 2px groove #e6e5e5;
+    margin-top: 10px;
+}
+
+button[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type=submit]:hover {
+    background-color: #45a049;
+}
+
+/* pre {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+    overflow-x: auto;
+    margin-top: 20px;
+} */
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

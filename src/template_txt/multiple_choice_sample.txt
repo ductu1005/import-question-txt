@@ -1,0 +1,11 @@
+Câu hỏi chọn 1?:
+A) Câu trả lời 1
+B) Câu trả lời 2
+C) Câu trả lời 3
+D) Câu trả lời 4
+ANSWER: A
+Câu hỏi 2?:
+A) Câu trả lời 1
+B) Câu trả lời 2
+C) Câu trả lời 3
+ANSWER: B

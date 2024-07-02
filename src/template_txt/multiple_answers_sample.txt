@@ -1,0 +1,13 @@
+Câu hỏi chọn được nhiều đáp án 1?:
+A) Câu trả lời đúng 1
+B) Câu trả lời sai 1
+C) Câu trả lời sai 2
+D) Câu trả lời đúng 2
+E) Câu trả lời sai 3
+ANSWER: A, C
+Câu hỏi chọn được nhiều đáp án 2?:
+A) Câu trả lời đúng 1
+B) Câu trả lời sai 1
+C) Câu trả lời sai 2
+D) Câu trả lời sai 3
+ANSWER: A
